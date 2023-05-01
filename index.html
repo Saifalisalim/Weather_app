@@ -76,6 +76,7 @@ navigator.geolocation.getCurrentPosition(successCallback);
         temp =Math.round(((cData.main.temp)-273.15))
         time =cData.timezone
         visib = cData.visibility
+        wind=cData.wind.speed
         country = cData.sys.country
         main = cData.weather[0].main
         sunrise = cData.sys.sunrise
@@ -84,6 +85,7 @@ navigator.geolocation.getCurrentPosition(successCallback);
         tmin =Math.round(((cData.main.temp_min)-273.15))
         tmax =Math.round(((cData.main.temp_max)-273.15))
         hum = cData.main.humidity
+
 
 
         result.innerHTML = `
@@ -99,7 +101,7 @@ navigator.geolocation.getCurrentPosition(successCallback);
                         <ul class="list-unstyled mt-3 mb-4">
                             <li><i class="fa-solid fa-clock"></i> Time zone: ${time}</li>
                             <li><i class="fa-solid fa-eye"></i> Visibility: ${visib}</li>
-                            <li><i class="fa-solid fa-umbrella"></i> Umbrella no need</li>
+                            <li><i class="fa-solid fa-wind"></i> Speed: ${wind}</li>
                             <li><br></li>
                         </ul>
                     </div>
@@ -153,7 +155,7 @@ navigator.geolocation.getCurrentPosition(successCallback);
                 <tbody>
                     <tr>
                         <th scope="row" class="text-start text-light">Saturday</th>
-                        <td><i class="fa-regular fa-sun text-warning fa-beat-fade" style="--fa-beat-fade-opacity: 0.30; --fa-beat-fade-scale: 1.075;"></i> Sunny<svg class="bi" width="24" height="24">
+                        <td><i class="fa-regular fa-sun text-warning"></i> Sunny<svg class="bi" width="24" height="24">
                                 <use xlink:href="#check"></use>
                             </svg></td>
                         <td><i class="fa-solid fa-droplet text-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 66%<svg class="bi" width="24" height="24">
@@ -165,7 +167,7 @@ navigator.geolocation.getCurrentPosition(successCallback);
                     </tr>
                     <tr>
                         <th scope="row" class="text-start text-light">Sunday</th>
-                        <td><i class="fa-solid fa-cloud-sun text-warning fa-beat-fade" style="--fa-beat-fade-opacity: 0.30; --fa-beat-fade-scale: 1.075;"></i> Partly Clouded</td>
+                        <td><i class="fa-solid fa-cloud-sun text-warning"></i> Partly Clouded</td>
                         <td><i class="fa-solid fa-droplet text-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 68%<svg class="bi" width="24" height="24">
                                 <use xlink:href="#check"></use>
                             </svg></td>
@@ -178,7 +180,7 @@ navigator.geolocation.getCurrentPosition(successCallback);
                 <tbody>
                     <tr>
                         <th scope="row" class="text-start text-light">Monday</th>
-                        <td><i class="fa-solid fa-cloud-sun-rain text-warning fa-beat-fade" style="--fa-beat-fade-opacity: 0.30; --fa-beat-fade-scale: 1.075;"></i> PM Thunderstorm<svg class="bi" width="24" height="24">
+                        <td><i class="fa-solid fa-cloud-sun-rain text-warning"></i> PM Thunderstorm<svg class="bi" width="24" height="24">
                                 <use xlink:href="#check"></use>
                             </svg></td>
                         <td><i class="fa-solid fa-droplet text-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 69%<svg class="bi" width="24" height="24">
@@ -190,7 +192,7 @@ navigator.geolocation.getCurrentPosition(successCallback);
                     </tr>
                     <tr>
                         <th scope="row" class="text-start text-light">Tuesday</th>
-                        <td> <i class="fa-solid fa-cloud-rain text-warning fa-beat-fade" style="--fa-beat-fade-opacity: 0.30; --fa-beat-fade-scale: 1.075;"></i> Scattered Thunderstorm</td>
+                        <td> <i class="fa-solid fa-cloud-rain text-warning"></i> Scattered Thunderstorm</td>
                         <td><i class="fa-solid fa-droplet text-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 68%<svg class="bi" width="24" height="24">
                                 <use xlink:href="#check"></use>
                             </svg></td>
@@ -200,7 +202,7 @@ navigator.geolocation.getCurrentPosition(successCallback);
                     </tr>
                     <tr>
                         <th scope="row" class="text-start text-light">Wedensaday</th>
-                        <td> <i class="fa-solid fa-cloud-sun text-warning fa-beat-fade" style="--fa-beat-fade-opacity: 0.30; --fa-beat-fade-scale: 1.075;"></i> Partly Clouded</td>
+                        <td> <i class="fa-solid fa-cloud-sun text-warning"></i> Partly Clouded</td>
                         <td><i class="fa-solid fa-droplet text-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 68%<svg class="bi" width="24" height="24">
                                 <use xlink:href="#check"></use>
                             </svg></td>
@@ -210,7 +212,7 @@ navigator.geolocation.getCurrentPosition(successCallback);
                     </tr>
                     <tr>
                         <th scope="row" class="text-start text-light">Thursday</th>
-                        <td><i class="fa-solid fa-cloud-showers-heavy text-warning fa-beat-fade" style="--fa-beat-fade-opacity: 0.30; --fa-beat-fade-scale: 1.075;"></i> Thunderstorm</td>
+                        <td><i class="fa-solid fa-cloud-showers-heavy text-warning"></i> Thunderstorm</td>
                         <td><i class="fa-solid fa-droplet text-info fa-beat" style="--fa-beat-scale: 1.5;"></i> 60%<svg class="bi" width="24" height="24">
                             <use xlink:href="#check"></use>
                         </svg></td>
