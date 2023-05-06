@@ -13,15 +13,20 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2981340327.js" crossorigin="anonymous"></script>
     <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Cabin+Sketch&family=Castoro+Titling&family=Covered+By+Your+Grace&family=Kranky&family=Pinyon+Script&family=Sacramento&display=swap');  
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Cabin+Sketch&family=Castoro+Titling&family=Chathura:wght@800&family=Covered+By+Your+Grace&family=Fira+Code:wght@300&family=Kranky&family=Major+Mono+Display&family=Pinyon+Script&family=Sacramento&display=swap');
+</style>
 </head>
 
 <body style="background-image: linear-gradient(to right, black, white);">
 
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-black" data-bs-theme="dark">
-        <div  class="container-fluid">
-            <a  class="navbar-brand" href="#"> <i class="fa-solid fa-sun text-warning fa-spin" style="--fa-animation-duration: 8s;"></i> Weather App</a>
-            <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-black bg-gradient" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a style="font-family: 'Kranky', cursive;" class="navbar-brand fw-bold" href="#"> <i class="fa-solid fa-sun text-warning fa-spin"
+                    style="--fa-animation-duration: 8s;"></i> Weather_App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,7 +44,7 @@
                 </ul>
                 <form class="d-flex" role="search">
                     <input id="cname" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button onclick="displayWhether()" class="btn btn-outline-warning" type="submit">Search</button>
+                    <button onclick="displayWhether()" class="btn btn-outline-warning" type="button">Search</button>
                 </form>
             </div>
         </div>
@@ -57,44 +62,48 @@
 
 <script>
 
-successCallback = (position) => {
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
+    successCallback = (position) => {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lon=${lon}&lat=${lat}&appid=b41ec3be35c7dac8aabbc21ba253137a`).then(data=>data.json()).then(data=>displayData(data))
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lon=${lon}&lat=${lat}&appid=b41ec3be35c7dac8aabbc21ba253137a`)
+            .then(cData => cData.json())
+            .then(cData => displayData(cData))
 
-};
-navigator.geolocation.getCurrentPosition(successCallback);
+    };
+    navigator.geolocation.getCurrentPosition(successCallback);
 
     function displayWhether() {
         country = cname.value
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=b41ec3be35c7dac8aabbc21ba253137a`).then(data => data.json()).then(data =>displayData(data))
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=b41ec3be35c7dac8aabbc21ba253137a`)
+            .then(cData => cData.json())
+            .then(cData => displayData(cData))
     }
 
     function displayData(cData) {
         name = cData.name
-        temp =Math.round(((cData.main.temp)-273.15))
-        time =cData.timezone
+        temp = Math.round(((cData.main.temp) - 273.15))
+        time = cData.timezone
         visib = cData.visibility
-        wind=cData.wind.speed
+        wind = cData.wind.speed
         country = cData.sys.country
         main = cData.weather[0].main
         sunrise = cData.sys.sunrise
         sunset = cData.sys.sunset
-        feels =Math.round(((cData.main.feels_like)-273.15))
-        tmin =Math.round(((cData.main.temp_min)-273.15))
-        tmax =Math.round(((cData.main.temp_max)-273.15))
+        feels = Math.round(((cData.main.feels_like) - 273.15))
+        tmin = Math.round(((cData.main.temp_min) - 273.15))
+        tmax = Math.round(((cData.main.temp_max) - 273.15))
         hum = cData.main.humidity
 
 
 
         result.innerHTML = `
-    <main>
+    <main style="font-family: 'Fira Code', monospace;">
         <div  class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col">
-                <div class="card mb-4 rounded-3 shadow-lg bg-dark text-light">
-                    <div  class="card-header py-3 text-bg-warning">
-                        <h4 class="my-0 fw-normal">${name}</h4>
+                <div class="card mb-4 rounded-3 shadow-lg bg-dark text-light bg-gradient">
+                    <div  class="card-header py-3 text-bg-warning bg-gradient">
+                        <h4 class="my-0 fw-bold">${name}</h4>
                     </div>
                     <div  class="card-body">
                         <h1 class="card-title pricing-card-title">${temp} &#176C</h1>
@@ -108,9 +117,9 @@ navigator.geolocation.getCurrentPosition(successCallback);
                 </div>
             </div>
             <div class="col">
-                <div class="card mb-4 rounded-3 shadow-lg bg-secondary">
-                    <div class="card-header py-3 text-bg-dark text-light">
-                        <h4 class="my-0 fw-normal">${country}</h4>
+                <div class="card mb-4 rounded-3 shadow-lg bg-secondary bg-gradient">
+                    <div class="card-header py-3 text-bg-dark text-light bg-gradient bg-gradient">
+                        <h4 class="my-0 fw-bold">${country}</h4>
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">${main}</h1>
@@ -124,9 +133,9 @@ navigator.geolocation.getCurrentPosition(successCallback);
                 </div>
             </div>
             <div class="col">
-                <div class="card mb-4 rounded-3 shadow-lg bg-dark text-light">
-                    <div class="card-header py-3 text-bg-warning">
-                        <h4 class="my-0 fw-normal"><i class="fa-solid fa-temperature-low"></i></h4>
+                <div class="card mb-4 rounded-3 shadow-lg bg-dark text-light bg-gradient">
+                    <div class="card-header py-3 text-bg-warning bg-gradient">
+                        <h4 class="my-0 fw-normal"><i class="fa-solid fa-temperature-low fw-bold"></i></h4>
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">${feels} &#176C</h1>
